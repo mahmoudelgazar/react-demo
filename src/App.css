@@ -22,14 +22,6 @@
   font-size: large;
 }
 
-.card {
-  margin: 15px auto;
-  border: 1px solid #eee;
-  box-shadow: 0 2px 3px #ccc;
-  width: 60%;
-  padding: 15px;
-  
-}
 
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }

@@ -13,6 +13,22 @@ class App extends Component {
     showpersons: false
   }
 
+  changeNameHandler = (event , id) => {
+    const personIndex = this.state.persons.findIndex( p => {
+      return p.id === id;
+    })
+    const person = { ...this.state.persons[personIndex] }
+    person.name= event.target.value;
+    const persons = { ...this.state.persons };
+    persons[personIndex] = person; 
+
+    this.setState({
+      persons
+    })
+
+    
+  }
+  
   DeleteNameHandler = (personsIndex) => {
     const persons = [...this.state.persons];
     persons.splice(personsIndex, 1)
@@ -37,6 +53,8 @@ class App extends Component {
       cursor: 'pointer',
       border: '1px solid #eee'
     };
+
+
     let persons = null;
     if (this.state.showpersons) {
       persons = (
@@ -47,7 +65,9 @@ class App extends Component {
                 key={person.id}
                 click={() => this.DeleteNameHandler(index)}
                 name={person.name}
-                age={person.age} />
+                age={person.age}
+                changed={(event) => this.changeNameHandler(event , person.id)}
+                />
             )
           })}
         </div>
